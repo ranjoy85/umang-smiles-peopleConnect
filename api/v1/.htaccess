@@ -1,0 +1,40 @@
+#user management server
+RewriteRule   ^user/test/?$ 						index.php?route=test [NC]
+
+RewriteRule   ^user/sign/up/?$ 						index.php?route=signUp [NC]
+RewriteRule   ^user/thirdParty/sign/up/?$ 			index.php?route=thirdPartySignUp [NC]
+
+RewriteRule   ^user/activate/?$ 					index.php?route=activateUserAccount [NC]
+RewriteRule   ^user/activate/code/resend/?$ 	    index.php?route=resendActivationCode [NC]
+RewriteRule   ^user/password/reset/code/?$ 			index.php?route=generatePasswordResetCode [NC]
+RewriteRule   ^user/verify/identity?$ 				index.php?route=verifyIdentity [NC]
+RewriteRule   ^user/update/password/?$ 				index.php?route=updatePassword [NC]
+
+RewriteRule   ^user/sign/in/?$ 						index.php?route=signIn [NC]
+RewriteRule   ^user/details/?$ 						index.php?route=getSignedInUserDetails [NC]
+RewriteRule   ^user/profile/update?$ 				index.php?route=updateUserProfile [NC]
+RewriteRule   ^user/search/?$ 						index.php?route=pullSearchableUserDetailsByEmail [NC]
+RewriteRule   ^registered/users/?$ 					index.php?route=registeredUsers [NC]
+RewriteRule   ^users/upload/crud/?$ 				index.php?route=usersUploadCRUD [NC]
+RewriteRule   ^user/logout/?$ 						index.php?route=logout [NC]
+RewriteRule   ^user/birthDayWish/?$ 				index.php?route=userBirthDayWish [NC]
+
+
+
+RewriteRule   ^user/events/?$ 						index.php?route=useEvents [NC]
+RewriteRule   ^user/events/?$ 						index.php?route=useEvents [NC]
+RewriteRule   ^system/event/all/?$ 					index.php?route=allEvents [NC]
+RewriteRule   ^event/crud/?$ 						index.php?route=eventCrud [NC]
+RewriteRule   ^event/details?$ 						index.php?route=eventDetails [NC]
+RewriteRule   ^user/event/attendence/crud/$ 		index.php?route=userEventAttendenceCRUD [NC]
+RewriteRule   ^user/event/nomination/crud/$ 		index.php?route=userEventNominationCRUD [NC]
+RewriteRule   ^user/feedback/crud/$ 				index.php?route=userFeedbackCRUD [NC]
+RewriteRule   ^user/achievement/crud/$ 				index.php?route=userAchievementCRUD [NC]
+RewriteRule   ^user/achievements/$ 					index.php?route=userAchievements [NC]
+RewriteRule   ^corporate/details/crud/$ 			index.php?route=corporateDetailsCRUD [NC]
+RewriteRule   ^event/images/crud/?$ 				index.php?route=eventImagesCrud [NC]
+RewriteRule   ^event/images/?$ 						index.php?route=eventImages [NC]
+RewriteRule   ^track/hour/?$ 						index.php?route=trackHour [NC]
+RewriteRule   ^user/feedbacks/?$ 					index.php?route=userFeedbacks [NC]
+RewriteRule   ^corporate/details/?$ 				index.php?route=corporateDetails [NC]
+
