@@ -1,0 +1,49 @@
+<ion-view view-title="Update Profile" class="background">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">UPDATE PROFILE</h1>
+  	</ion-header-bar>
+  	<ion-nav-buttons side=left>
+        <a class="button button-icon icon fa fa-chevron-left" ng-click="goBack()"></a> 
+    </ion-nav-buttons>
+	<ion-content>
+		<div class="list custom-icon_font">
+			<div class="app-form">
+			  	<div class="list">
+			  		<form name="updateProfileForm" novalidate="" ng-submit="updateProfile(updateProfileForm)">
+				 		<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm.userFirstName.$invalid, 'no-errors' : updateProfileForm.userFirstName.$valid}">
+					  		<div class="icon">First Name</i></div>
+					  		<input type="text" name="userFirstName" ng-model="_updateProfileFormData.userFirstName" placeholder ="Arun" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm.userFirstName.$error" ng-messages="updateProfileForm.userFirstName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+
+						<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm.userLastName.$invalid, 'no-errors' : updateProfileForm.userLastName.$valid}">
+					  		<div class="icon">Last Name</div>
+					  		<input type="text" name="userLastName" ng-model="_updateProfileFormData.userLastName" placeholder="Raj" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm.userLastName.$error" ng-messages="updateProfileForm.userLastName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm.userDob.$invalid, 'no-errors' : updateProfileForm.userDob.$valid}">
+								<div class="icon">Date Of Barth</div>
+								<input type="date" name="userDob" ng-model="_updateProfileFormData.userDob" placeholder="Raj" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm.userDob.$error" ng-messages="updateProfileForm.userDob.$error">
+								<div ng-messages-include="templates/error/error-date.html"></div>
+						</div>
+						</br>
+						<div class="submit-button-area">
+							<button class="app-button-cancel width-40-percent float-left" ng-click="cancelProfileUpdate()" type="button">
+								Cancel
+							</button>
+								<button class="app-button-submit-blue width-60-percent float-left" type="submit" ng-disabled="updateProfileForm.$invalid">
+								Update Profile
+				  			</button>
+						</div>
+			  		</form>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,43 @@
+<ion-view view-title="Event Photos" class="background">
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.BACK}}" ng-click="goBack()"></a> 
+    </ion-nav-buttons>
+    <ion-nav-buttons side=right>
+        <a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        <div ng-show="_noData" class="app-form-in">
+            <div class="list">
+                <div class="no-data">
+                    <div class="icon">
+                        <i class="ion-information-circled"></i>
+                    </div>
+                    <div class="text" >
+                        {{_message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-form-universal-container" ng-show="_hasData">
+            <div class="app-form-universal-container">
+                <!-- project list-->
+                <div class="table-spot-container board-balanced-light">
+                    <div class="title board-mellow-dark">
+                        <div class="text text-type-0">
+                            <i class={{_fontIconConst.LIST}} aria-hidden="true"></i> {{_eventPhotos.data.eventName}} Photos
+                        </div>
+                        <div class="action">
+                            
+                        </div>
+                    </div>
+                    <div ng-repeat = "_photo in _eventPhotos.data.photos.data" ng-if="_eventPhotos.data.photos.success">
+                        <div class="gallery">
+                            <img src={{imageSource(_photo)}}>
+                        </div>
+                    </div>
+                </div>
+                <!-- project list -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

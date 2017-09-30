@@ -1,0 +1,54 @@
+<ion-view view-title="User Profile" class="background">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">PROFILE</h1>
+  	</ion-header-bar>
+  	<ion-nav-buttons side=left>
+        <a class="button button-icon icon fa fa-list-ul" ng-click="openLeftMenu()"></a> 
+    </ion-nav-buttons>
+	<ion-content>
+		<div class="list custom-icon_font">
+			<div class="app-form">
+			  	<div class="list">
+			  		<div class="" ng-model="_userProfileData">
+						<div class="user-profile">
+
+			                <div class="icon app-background-color-blue">
+			                	<div class="text">
+			                		{{_userProfileData.userFirstName.charAt(0)}}{{_userProfileData.userLastName.charAt(0)}}
+			                	</div>
+			                	<!-- <div class="profile-image" ng-hide="_userProfileData.thirdPartyUserId == '0'">
+			                		<img class="icon" ng-src="{{_userProfileData.userPicture}}">
+			                	</div> -->
+			                    
+			                </div>
+			                <div class="profile-specs app-text-color-blue">
+			                    {{_userProfileData.userFirstName}} {{_userProfileData.userLastName}}
+			                </div>
+			                <div class="profile-specs app-text-color-blue">
+			                    {{_userProfileData.userEmail}}
+							</div>
+							<div class="profile-specs app-text-color-blue">
+			                    Born on {{_userProfileData.userDob}}
+							</div>
+							<div class="profile-specs app-text-color-blue">
+								Your Membership Id
+							</div>
+							<div class="profile-specs app-text-color-blue">
+			                    {{_userProfileData.userId}}
+			                </div>
+			                <!-- <div class="profile-specs app-text-color-blue" ng-hide="_userProfileData.thirdPartyUserId == '0'">
+			                    You have logged in as [{{_userProfileData.userType}}] user
+			                </div> -->
+			            </div>
+						</br>
+						<div class="submit-button-area">
+								<button class="app-button-submit-blue width-100-percent float-left" type="button" ng-click="goEditProfile()">
+								Edit Profile
+				  			</button>
+						</div>
+			  		</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,194 @@
+<ion-view view-title="Event Details" class="background">
+    <ion-header-bar class="app-bar-blue">
+        <h1 class="title">Event Details</h1>
+    </ion-header-bar>
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.BACK}}" ng-click="goBack()"></a> 
+    </ion-nav-buttons>
+    <ion-nav-buttons side=right>
+        <a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        <div ng-show="_noData" class="app-form-in">
+            <div class="list">
+                <div class="no-data">
+                    <div class="icon">
+                        <i class="ion-information-circled"></i>
+                    </div>
+                    <div class="text" >
+                        {{_message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-form-universal-container" ng-show="_hasData">
+            <div class="app-form-universal-container">
+                <!-- project list-->
+                <div class="table-spot-container board-balanced-light">
+                    <div class="title board-mellow-dark">
+                        <div class="text text-type-0">
+                            <i class={{_fontIconConst.LIST}} aria-hidden="true"></i> {{_eventDetails.data.eventName}} Details
+                        </div>
+                        <div class="action" ng-click="moreEventActions()">
+                            <i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                        <b>
+                                        </i> Event ID - {{_eventDetails.data.eventId}}
+                                        </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-list" ng-show="!_eventDetails.success">
+                        <div class="table-title-container">
+                            <div class="top top-type-5">
+                                <div class="column-type-note">
+                                    <i class={{_fontIconConst.INFO}}></i> {{_stringConst.NO_DATA}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="top top-type-4">
+                                {{_eventDetails.data.eventDescription}} 
+                            </div>
+                        </div>
+                    </div>
+                    <!--media  -->
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                        <b>
+                                        <i class={{_fontIconConst.TEAM}}></i> Media coverage
+                                        </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-top-tab-button" ng-click="mediaCoverage(_eventDetails, 'FB')">
+                        <i class={{_fontIconConst.FB}}></i>
+                    </div>
+                    <div class="app-top-tab-button" ng-click="mediaCoverage(_eventDetails, 'TW')">  
+                        <i class={{_fontIconConst.TW}}></i>
+                    </div>
+                    <div class="app-top-tab-button" ng-click="mediaCoverage(_eventDetails, 'YT')">  
+                        <i class={{_fontIconConst.YT}}></i>
+                    </div>
+                    <div class="app-top-tab-button" ng-click="mediaCoverage(_eventDetails, 'WEB')">  
+                        <i class={{_fontIconConst.WEB}}></i>
+                    </div>
+                    <!--QR Code  -->
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                        <b>
+                                        <i class={{_fontIconConst.TEAM}}></i> Event QR code
+                                        </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="bottom bottom-type-2"></div>
+                            <div class="top top-type-5">
+                                <div class="column-type-note ng-binding">
+                                    <i class="fa fa-info-circle"></i> Scan below QR Code to Sign in to the Event, Scan while sign out
+                                </div>
+                            </div>
+                            <div class="bottom bottom-type-2"></div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-list">
+                            <div class="column column-type-3">
+                                <qrcode text={{_eventId}}>
+                                </qrcode>
+                            </div>
+                        </div>
+                    </div>
+                    <!--QR Code  -->
+                    <table class="rwd-table" width="100%" ng-if="userAttendence[0] || userAttendence[1] ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <b>Event Sign In At</b>
+                                </th>
+                                <th>
+                                    <b>Event Sign Out At</b>
+                                </th>
+                                <th>
+                                    <b>Spent Hours</b>
+                                </th>
+                            </tr>
+                        <thead>
+                            
+                        <tbody>
+                            <tr class="data-th">
+                                <td data-th="Sign In At">
+                                    {{userAttendence[0]}}
+                                </td>
+                                <td data-th="Sign Out At">
+                                    {{userAttendence[1]}}
+                                </td>
+                                <td data-th="Spent Hours">
+                                    {{userAttendence[3]}}
+                                </td>
+                            </tr>
+                        <tbody>
+                    </table>
+                    <!--volimenteers  -->
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                    <b>
+                                    <i class={{_fontIconConst.VOLUNTEER}}></i> Volunteer(s)
+                                    </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list" ng-show="_eventDetails.data.users.success">
+                        <div class="table-list" ng-repeat="_user in _eventDetails.data.users.data">
+                            <div class="column column-type-1">
+                                <div class="profile-circle ng-binding">
+                                    {{_user.userFirstName.charAt(0)}}{{_user.userLastName.charAt(0)}}
+                                </div>
+                            </div>
+                            <div class="column column-type-2 ng-binding">
+                                <b class="ng-binding">
+                                    {{_user.userFirstName}}{{_user.userLastName}} [{{_user.userType}}]
+                                </b>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--volimenteers  -->
+                </div>
+                <!-- project list -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

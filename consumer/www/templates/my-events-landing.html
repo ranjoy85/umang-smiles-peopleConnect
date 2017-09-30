@@ -1,0 +1,95 @@
+<ion-view view-title="My Event(s)" class="background">
+    <ion-header-bar class="app-bar-blue">
+        <h1 class="title">My Event(s)</h1>
+    </ion-header-bar>
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+    </ion-nav-buttons>
+    <ion-nav-buttons side=right>
+        <a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="app-form-universal-container-header-container">
+            <div class="page-search">
+                <input type="text" ng-model="search.$" placeholder="Search" />
+                <div class="icon">
+                    <i class="fa fa-search"></i> 
+                </div>
+            </div>
+        </div>
+        <div class="table-spot-container board-balanced-light">
+            <div class="title board-mellow-dark">
+                <div class="text text-type-2" ng-if="_events.data.length">
+                    You have been part of {{_events.data.length}} event(s)
+                </div>
+                <div class="text text-type-2" ng-if="!_events.data.length">
+                    You have been not been part of any event(s)
+                </div>
+            </div>
+        </div>
+        <div class="app-form-universal-container" ng-show="_hasData">
+            <div class="app-form-universal-container" ng-repeat="_event in _events.data | filter:search">
+                <!-- project list-->
+                <div class="table-spot-container board-balanced-light">
+                    <div class="title board-mellow-dark">
+                        <div class="text text-type-0">
+                            <i class={{_fontIconConst.EVENT}} aria-hidden="true"></i> {{_event.eventName}}
+                        </div>
+                        <div class="action" ng-click="getEventDetails(_event)">
+                            <i class={{_fontIconConst.RIGHT_ARROW}} aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                        <b>
+                                        </i> Event ID - {{_event.eventId}}
+                                        </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="top top-type-4">
+                                {{_event.eventDescription}} 
+                            </div>
+                        </div>
+                    </div>
+                    <!--QR Code  -->
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                        <b>
+                                        </i> Event on - {{_event.eventDate}}
+                                        </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="bottom bottom-type-2"></div>
+                            <div class="top top-type-5">
+                                <div class="column-type-note ng-binding">
+                                    <i class={{_fontIconConst.VOLUNTEER}}></i> {{_event.users.data.length}} Volunteer(s)
+                                </div>
+                            </div>
+                            <div class="bottom bottom-type-2"></div>
+                        </div>
+                    </div>
+                    <!--volimenteers  -->
+                </div>
+                <!-- project list -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

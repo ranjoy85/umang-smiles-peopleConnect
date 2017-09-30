@@ -1,0 +1,54 @@
+<ion-view view-title="Sign In" class="background">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">SIGN IN</h1>
+  	</ion-header-bar>
+	<ion-content>
+		<div class="list custom-icon_font">
+			<div class="app-form">
+			  	<div class="list">
+						
+					<button class="app-button-submit-blue width-100-percent float-right app-button-submit-blue-fb" type="button" ng-click="goToFBSignIn()">
+							Sign in with Facebook
+					</button>
+					<div class="info">
+							------ Or ------
+					</div>
+			  		<form name="authorizationForm" novalidate="" ng-submit="signIn(authorizationForm)">
+				 		<label class="item-input" ng-class="{ 'has-errors' : authorizationForm.userEmail.$invalid, 'no-errors' : authorizationForm.userEmail.$valid}">
+					  		<div class="icon">email</div>
+					  		<input type="email" name="userEmail" ng-model="_authorizationFormData.userEmail" placeholder = "name@example.com"required value="rama.sen@gmail.com">
+						</label>
+						<div class="error-container" ng-show="authorizationForm.userEmail.$error" ng-messages="authorizationForm.userEmail.$error">
+					  		<div ng-messages-include="templates/error/error-email.html"></div>
+						</div>
+						<label class="item-input" ng-class="{ 'has-errors' : authorizationForm.userPassword.$invalid, 'no-errors' : authorizationForm.userPassword.$valid}">
+					  		<div class="icon">password</div>
+					  		<input type="password" name="userPassword" ng-model="_authorizationFormData.userPassword" ng-pattern="_pattern._passwordPattern" required value="rama1234">
+						</label>
+						<div class="error-container" ng-show="authorizationForm.userPassword.$error" ng-messages="authorizationForm.userPassword.$error">
+					  		<div ng-messages-include="templates/error/error-password.html"></div>
+						</div>
+						<div class="page-text">
+							Forgot your password? <a ng-click="goForgotPassword()">Get It</a>
+						</div>
+						<div class="submit-button-area">
+							<button class="app-button-cancel width-50-percent float-left" ng-click="cancelSignIn()" type="button">
+								Cancel
+							</button>
+							<button class="app-button-submit-blue width-50-percent float-left" type="submit" ng-disabled="authorizationForm.$invalid">
+								Sign In
+			  				</button>
+			  				
+						</div>
+			  			<div class="page-text">
+							Account not yet activated ? <a ng-click="activateUserAccount()">Activate</a>
+						</div>
+						
+			  			</br>
+			  		</form>
+			  		
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

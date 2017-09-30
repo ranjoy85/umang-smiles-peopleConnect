@@ -1,0 +1,71 @@
+<ion-view view-title="Sign Up" class="background">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">SIGN UP </h1>
+  	</ion-header-bar>
+	<ion-content>
+		<div class="list custom-icon_font">
+			<div class="app-form">
+			  	<div class="list">
+			  		<form name="signUpForm" novalidate="" ng-submit="signUp(signUpForm)">
+			  			<div class="info">
+							We will send you a verification code on the same email id. Use the id to activate your account. 
+						</div>
+				 		<label class="item-input" ng-class="{ 'has-errors' : signUpForm.userEmail.$invalid, 'no-errors' : signUpForm.userEmail.$valid}">
+					  		<div class="icon">email</div>
+					  		<input type="email" name="userEmail" ng-model="_signUpFormData.userEmail" placeholder = "name@example.com"required>
+						</label>
+						<div class="error-container" ng-show="signUpForm.userEmail.$error" ng-messages="signUpForm.userEmail.$error">
+					  		<div ng-messages-include="templates/error/error-email.html"></div>
+						</div>
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm.userPassword.$invalid, 'no-errors' : signUpForm.userPassword.$valid}">
+					  		<div class="icon">password</i></div>
+					  		<input type="password" name="userPassword" ng-model="_signUpFormData.userPassword" placeholder = "8-10 char, 1 aplabel & 1 No" ng-pattern="_pattern._passwordPattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm.userPassword.$error" ng-messages="signUpForm.userPassword.$error">
+					  		<div ng-messages-include="templates/error/error-password.html"></div>
+						</div>
+
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm.userFirstName.$invalid, 'no-errors' : signUpForm.userFirstName.$valid}">
+					  		<div class="icon">First Name</i></div>
+					  		<input type="text" name="userFirstName" ng-model="_signUpFormData.userFirstName" placeholder ="Arun" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm.userFirstName.$error" ng-messages="signUpForm.userFirstName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm.userLastName.$invalid, 'no-errors' : signUpForm.userLastName.$valid}">
+					  		<div class="icon">Last Name</div>
+					  		<input type="text" name="userLastName" ng-model="_signUpFormData.userLastName" placeholder="Raj" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm.userLastName.$error" ng-messages="signUpForm.userLastName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm.userDob.$invalid, 'no-errors' : signUpForm.userDob.$valid}">
+								<div class="icon">Date Of Barth</div>
+								<input type="date" name="userDob" ng-model="_signUpFormData.userDob" placeholder="Raj" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm.userDob.$error" ng-messages="signUpForm.userDob.$error">
+								<div ng-messages-include="templates/error/error-date.html"></div>
+						</div>
+						</br>
+						<div class="submit-button-area">
+							<button class="app-button-cancel width-50-percent float-left" ng-click="cancelSignUp()" type="button">
+								Cancel
+							</button>
+								<button class="app-button-submit-blue width-50-percent float-left" type="submit" ng-disabled="signUpForm.$invalid">
+								Sign Up
+				  			</button>
+						</div>
+						<div class="page-text">
+							Already have activation code ? <a ng-click="activateUserAccount()">Activate</a>
+						</div>
+						<div class="page-text">
+							By signing up you confirm that you understand and agree to our <a ng-click="termsAndConditions()">Terms & Conditions</a>
+						</div>
+						</br>
+			  		</form>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,67 @@
+<ion-modal-view view-title='Add/Edit Achievement' class="background-modal" ng-controller="CreateEditAchievementModalCtrl">
+	<ion-header-bar class="app-bar-blue">
+		<h1 class="title">Add/Edit Achievement</h1>
+	</ion-header-bar>
+	<form name="createEditAchievementForm" novalidate="" ng-submit="CRUDAchievementDetails(createEditAchievementForm)">
+		<ion-content>
+			<div class="list custom-icon_font">
+				<div class="app-form">
+					<div class="list">
+						<div class="info">
+								Please provide suitable details to the achievement
+						</div>
+						</br>
+						<!-- Name -->
+						<label class="item-input" ng-class="{ 'has-errors' : createEditAchievementForm.achievementName.$invalid, 'no-errors' : createEditAchievementForm.achievementName.$valid}">
+							<div class="icon">Achievement Name</div>
+							<input type="text" name="achievementName" ng-model="_createEditAchievementFormData.achievementName" placeholder = "" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="createEditAchievementForm.achievementName.$error" ng-messages="createEditAchievementForm.achievementName.$error">
+							<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- name -->
+						<!-- DATE -->
+						<label class="item-input" ng-class="{ 'has-errors' : createEditAchievementForm.achievementReceavedOn.$invalid, 'no-errors' : createEditAchievementForm.achievementReceavedOn.$valid}">
+							<div class="icon">Achievement Receaved On</i></div>
+							<input type="date" name="achievementReceavedOn" ng-model="_createEditAchievementFormData.achievementReceavedOn" placeholder = "" ng-pattern="_pattern._datePattern" required></textarea>
+						</label>
+						<div class="error-container" ng-show="createEditAchievementForm.achievementReceavedOn.$error" ng-messages="createEditAchievementForm.achievementReceavedOn.$error">
+							<div ng-messages-include="templates/error/error-date.html"></div>
+						</div>
+						<!-- DATE -->
+						<!-- DESCRIPTION -->
+						<label class="item-input" ng-class="{ 'has-errors' : createEditAchievementForm.achievementDescription.$invalid, 'no-errors' : createEditAchievementForm.achievementDescription.$valid}">
+							<div class="icon">Achievement Description</i></div>
+							<textarea rows="4" cols="50" type="text" name="achievementDescription" ng-model="_createEditAchievementFormData.achievementDescription" placeholder = "" ng-pattern="_pattern._descriptionPattern" required></textarea>
+						</label>
+						<div class="error-container" ng-show="createEditAchievementForm.achievementDescription.$error" ng-messages="createEditAchievementForm.achievementDescription.$error">
+							<div ng-messages-include="templates/error/error-description.html"></div>
+						</div>
+						<!-- DESCRIPTION -->
+						</br>
+					</div>
+				</div>
+			</div>
+		</ion-content>
+		<ion-footer-bar align-title="left" class="app-form-universal-container-footer-container">
+			<div class="action-area">
+				<button class="action action-cancel action-border" ng-click="cancelOperation()" type="button">
+					<div class="icon">
+						<i class={{_fontIconConst.CLOSE}}></i>
+					</div>
+					<div class="text">
+						Cancel
+					</div>
+				</button>
+				<button class="action action-done" type="submit" ng-disabled="createEditAchievementForm.$invalid">
+					<div class="icon">
+						<i class={{_fontIconConst.SAVE}}></i>
+					</div>
+					<div class="text">
+						Save
+					</div>
+				</button>
+			</div>
+		</ion-footer-bar>
+	</form>
+</ion-modal-view>

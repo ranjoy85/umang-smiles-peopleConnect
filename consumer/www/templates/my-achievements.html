@@ -1,0 +1,76 @@
+<ion-view view-title="My Achievement(s)" class="background">
+    <ion-header-bar class="app-bar-blue">
+        <h1 class="title">My Achievement(s)</h1>
+    </ion-header-bar>
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+    </ion-nav-buttons>
+    <ion-nav-buttons side=right>
+        <a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        <div ng-show="_noData" class="app-form-in">
+            <div class="list">
+                <div class="no-data">
+                    <div class="icon">
+                        <i class="ion-information-circled"></i>
+                    </div>
+                    <div class="text" >
+                        No data available
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-form-universal-container" ng-show="_hasData">
+            <div class="app-form-universal-container" ng-repeat="_achievement in _myAchievements.data">
+                <!-- project list-->
+                <div class="table-spot-container board-balanced-light">
+                    <div class="title board-mellow-dark">
+                        <div class="text text-type-0">
+                            <i class={{_fontIconConst.ACHIEVEMENT}} aria-hidden="true"></i> {{_achievement.achievementName}}
+                        </div>
+                        <div class="action" ng-click="moreAchievementActions(_achievement)">
+                            <i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container" >
+                            <div class="bottom bottom-l3-2 bottom-type-4">
+                                <span>
+                                        <b>
+                                        </i> For Event - {{_achievement.eventName}}
+                                        </b>
+                                </span>
+                                <span>
+                                        &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="top top-type-4">
+                                {{_achievement.achievementDescription}} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                            <div class="table-row-container" >
+                                <div class="bottom bottom-l3-2 bottom-type-4">
+                                    <span>
+                                            <b>
+                                            </i> Received on - {{_achievement.achievementReceavedOn}}
+                                            </b>
+                                    </span>
+                                    <span>
+                                            &nbsp;
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- project list -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,146 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content view-title="Access Points">
+        <ion-nav-bar class="app-bar-blue">
+            <!-- <ion-nav-back-button class="button-dark">
+                <i class="fa fa-arrow-left"></i>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <div class="bar bar-header">
+                    <button id="leftMenu" class="button button-icon ion-navicon" menu-toggle="left">
+                </button>
+                </div>
+            </ion-nav-buttons> -->
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu expose-aside-when="large" side="left" class="background-dark">    
+    <ion-content>
+        <ion-list>
+            <div class="user-profile left-menu-classic">
+                <div class="icon">
+                    <div class="text ">
+                        {{_sessionData.userFirstName.charAt(0)}}{{_sessionData.userLastName.charAt(0)}}
+                    </div>
+                    <!-- <div class="profile-image" ng-hide="_sessionThirdPartyUserData.thirdPartyUserId == '0'">
+                        <img class="icon" ng-src="{{_sessionThirdPartyUserData.userPicture}}">
+                    </div> -->
+                    
+                </div>
+                <div class="profile-specs">
+                    {{_sessionData.userFirstName}}
+                </div>
+                <div class="profile-specs">
+                    {{_sessionData.userEmail}}
+                </div>
+            </div>
+            <ion-item enav-clear menu-close  ui-sref="app.my-events-landing" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.EVENT}}></i>
+                    </div>
+                    <div class="menu-text">
+                        My Events 
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.my-achievements" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.ACHIEVEMENT}}></i>
+                    </div>
+                    <div class="menu-text">
+                        My Achievements
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.volunteer-speak" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.SPEAK}}></i>
+                    </div>
+                    <div class="menu-text">
+                        Volunteer speak
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.system-events-landing" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.EVENT}}></i>
+                    </div>
+                    <div class="menu-text">
+                        All Events 
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.capture-corporate-details" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.BOOKMARK}}></i>
+                    </div>
+                    <div class="menu-text">
+                        Capture Corporate Details 
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.profile" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="menu-text">
+                        Profile
+                    </div>
+                    <div class="menu-notification">
+
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close ui-sref="app.about" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class="ion-information-circled"></i>
+                    </div>
+                    <div class="menu-text">
+                        About
+                    </div>
+                    <div class="menu-notification">
+
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <div class="left-menu-logout" ng-click="goLogout()">
+                <span>Sign Out </span></br><i class="fa fa-sign-out"></i>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-side-menus>
