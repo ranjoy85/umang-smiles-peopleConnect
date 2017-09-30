@@ -1,0 +1,132 @@
+<ion-view view-title={{_stringConst.EVENTS.toUpperCase()}} class="background">
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+    </ion-nav-buttons>
+    <ion-nav-buttons side=right>
+        <a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        <div ng-show="_noData" class="app-form-in">
+            <div class="list">
+                <div class="no-data">
+                    <div class="icon">
+                        <i class="ion-information-circled"></i>
+                    </div>
+                    <div class="text" >
+                        {{_message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-form-universal-container" ng-show="_hasData">
+            <div class="app-form-universal-container">
+                <!-- project list-->
+                <div class="table-spot-container board-balanced-light">
+                    <div class="title board-mellow-dark">
+                        <div class="text text-type-0">
+                            <i class={{_fontIconConst.LIST}} aria-hidden="true"></i> {{_stringConst.SYSTEM_EVETS_VOLUNTEERS}}
+                        </div>
+                        <div class="action" ng-click="moreTitleBarActions()">
+                            <i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="bottom bottom-type-2"></div>
+                            <div class="top top-type-5">
+                                <div class="column-type-note ng-binding">
+                                    <i class="fa fa-info-circle"></i> Below all events found
+                                </div>
+                            </div>
+                            <div class="bottom bottom-type-2"></div>
+                        </div>
+                    </div>
+                    <div class="table-list" ng-show="!_systemEvents.success">
+                        <div class="table-title-container">
+                            <div class="top top-type-5">
+                                <div class="column-type-note">
+                                    <i class={{_fontIconConst.INFO}}></i> No event found
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="_event in _systemEvents.data"> 
+                        <div class="table-list">
+                            <div class="table-row-container" >
+                                <div class="bottom bottom-l3-2 bottom-type-3">
+                                    <span>
+                                         <b>
+                                            <i class={{_fontIconConst.EVENT}}></i> {{_event.eventName}} [{{_event.eventId}}]
+                                         </b>
+                                    </span>
+                                    <span class="cursor-pointer" ng-click="moreProjectActions(_event)">
+                                         <i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-list">
+                            <div class="table-row-container">
+                                <div class="top top-type-4">
+                                    {{_event.eventDescription}} 
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <!-- team -->
+                        <div class="table-list">
+                            <div class="table-row-container" >
+                                <div class="bottom bottom-l3-2 bottom-type-4">
+                                    <span>
+                                         <b>
+                                            <i class={{_fontIconConst.MULTIPLE_USERS}}></i> {{_stringConst.VOLUNTEERS}}
+                                         </b>
+                                    </span>
+                                    <span>
+                                         &nbsp;
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-list" ng-show="!_event.users.success">
+                            <div class="table-title-container">
+                                <div class="top top-type-5">
+                                    <div class="column-type-note">
+                                        <i class={{_fontIconConst.INFO}}></i> {{_stringConst.NO_DATA}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-list" ng-show="_event.users.success">
+                            <div class="table-list" ng-repeat="_user in _event.users.data">
+                                <div class="column column-type-6">
+                                    <div class="profile-circle ng-binding">
+                                        {{_user.userFirstName.charAt(0)}}{{_user.userLastName.charAt(0)}}
+                                    </div>
+                                </div>
+                                <div class="column column-type-7 ng-binding">
+                                    <b class="ng-binding">
+                                        {{_user.userFirstName}}{{_user.userLastName}}
+                                    </b>
+                                </div>
+                            </div>
+                            <!-- CFD -->
+                            <!-- <div class="table-row-container">
+                                <div class="profile-circle" ng-repeat="_user in _event.users.data">
+                                    
+                                </div>
+                                <div class="profile-circle cursor-pointer" ng-click="teamUserManagement(_team.projectId, _team.teamId)">
+                                    <i class={{_fontIconConst.PLUS}}></i>
+                                </div>  
+                            </div> -->
+                            <!-- CFD -->
+                        </div>
+                        <!-- team -->
+                    </div>
+                </div>
+                <!-- project list -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

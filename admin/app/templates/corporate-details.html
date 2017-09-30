@@ -1,0 +1,86 @@
+<ion-view view-title={{_stringConst.CORPORATE_DETAILS.toUpperCase()}} class="background">
+	<ion-nav-buttons side=left>
+		<a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+	</ion-nav-buttons>
+	<ion-nav-buttons side=right>
+		<a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="app-form-universal-container">
+			<div class="app-form-universal-container">
+				<!-- Registeded Users-->
+				<div class="table-spot-container board-balanced-light">
+					<div class="title board-mellow-dark">
+						<div class="text text-type-0">
+							<i class={{_fontIconConst.BOOKMARK}} aria-hidden="true"></i> {{_stringConst.CORPORATE_DETAILS}}
+						</div>
+						<div class="action">
+							&nbsp;
+						</div>
+					</div>
+					<div class="table-list">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> List of corporate details
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div class="table-list" ng-show="!_corporateDetails.success">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> No corporate found
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div class="table-category table-graph-width-0" ng-hide="!_corporateDetails.success">
+						<div id="exportLeaveTypes">
+							<table class="rwd-table" width="100%">
+								<thead>
+									<tr>
+										<th>
+											<b>Name</b>
+										</th>
+										<th>
+											<b>Phone</b>
+										</th>
+										<th>
+											<b>Email</b>
+										</th>
+										<th>
+											<b>Address</b>
+										</th>
+									</tr>
+								<thead>
+								<tbody>
+									<tr ng-repeat="_corporate in _corporateDetails.data" class="data-th">
+										<td data-th='Name'>
+											{{_corporate.corporateName}}
+										</td>
+										<td data-th='Phone'>
+											{{_corporate.corporatePhoneNo}} 
+										</td>
+										<td data-th='Email'>
+											{{_corporate.corporateEmail}} 
+										</td>
+										<td data-th='Address'>
+											{{_corporate.corporateAddress}} 
+										</td>
+									</tr>
+								<tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- Registeded Users-->
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

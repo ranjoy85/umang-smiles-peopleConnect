@@ -1,0 +1,67 @@
+<ion-view view-title={{_stringConst.SECURITY_CHECK_IN}} class="background-modal">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">{{_stringConst.SECURITY_CHECK_IN.toUpperCase()}}</h1>
+  	</ion-header-bar>
+  	<form name="securityCheckInForm" novalidate="" ng-submit="securityCheckIn(securityCheckInForm)">
+		<ion-content>
+			<div class="list custom-icon_font">
+				<div class="app-form">
+				  	<div class="list">
+				  		<div class="info">
+							{{_stringConst.SECURITY_CHECK_IN_INFO}}
+						</div>
+						</br>
+						<!-- email -->
+						<label class="item-input" ng-class="{ 'has-errors' : securityCheckInForm._userEmail.$invalid, 'no-errors' : securityCheckInForm._userEmail.$valid}">
+					  		<div class="icon">{{_stringConst.EMAIL}}</div>
+					  		<input type="email" name="_userEmail" ng-model="_securityCheckInFormData._userEmail" placeholder = "name@org.com" required>
+						</label>
+						<div class="error-container" ng-show="securityCheckInForm._userEmail.$error" ng-messages="securityCheckInForm._userEmail.$error">
+					  		<div ng-messages-include="templates/error/error-email.html"></div>
+						</div>
+						<!-- email -->
+						<!-- SQ1 -->
+			            <label class="item-input" ng-class="{ 'has-errors' : securityCheckInForm._userSecurityAnswer1.$invalid, 'no-errors' : securityCheckInForm._userSecurityAnswer1.$valid}">
+			            	<div class="icon">{{_stringConst.SECURITY_QUESTION_1}}</div>
+					  		<input type="text" name="_userSecurityAnswer1" ng-model="_securityCheckInFormData._userSecurityAnswer1" placeholder="Consultant" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="securityCheckInForm._userSecurityAnswer1.$error" ng-messages="securityCheckInForm._userSecurityAnswer1.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- SQ1 -->
+						<!-- SQ2 -->
+			            <label class="item-input" ng-class="{ 'has-errors' : securityCheckInForm._userSecurityAnswer2.$invalid, 'no-errors' : securityCheckInForm._userSecurityAnswer2.$valid}">
+			            	<div class="icon">{{_stringConst.SECURITY_QUESTION_2}}</div>
+					  		<input type="text" name="_userSecurityAnswer2" ng-model="_securityCheckInFormData._userSecurityAnswer2" placeholder="John" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="securityCheckInForm._userSecurityAnswer2.$error" ng-messages="securityCheckInForm._userSecurityAnswer2.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- SQ2 -->
+						</br>
+					</div>
+				</div>
+			</div>
+		</ion-content>
+		<ion-footer-bar align-title="left" class="app-form-universal-container-footer-container">
+			<div class="action-area">
+				<button class="action action-cancel action-border" ng-click="cancelSecurityCheckInForm()" type="button">
+					<div class="icon">
+						<i class="ion-close"></i>
+					</div>
+					<div class="text">
+						{{_stringConst.CANCEL}}
+					</div>
+				</button>
+				<button class="action action-done" type="submit" ng-disabled="securityCheckInForm.$invalid">
+					<div class="icon">
+						<i class="ion-checkmark-round"></i> 
+					</div>
+					<div class="text">
+						{{_stringConst.CONTINUE}}
+					</div>
+				</button>
+			</div>
+		</ion-footer-bar>
+	</form>
+</ion-view>

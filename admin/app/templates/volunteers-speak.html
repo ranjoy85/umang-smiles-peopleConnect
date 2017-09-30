@@ -1,0 +1,84 @@
+<ion-view view-title={{_stringConst.VOLUNTEERS_FEEDBACK.toUpperCase()}} class="background">
+	<ion-nav-buttons side=left>
+		<a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+	</ion-nav-buttons>
+	<ion-nav-buttons side=right>
+		<a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+	</ion-nav-buttons>
+	<ion-content>
+		<input type="file" id="fileElem" ng-model="myFile" class="form-control" accept=".csv"  onchange="angular.element(this).scope().uploadedFile(this)">
+			
+		<div class="app-form-universal-container">
+			<div class="app-form-universal-container">
+				<!-- Registeded Users-->
+				<div class="table-spot-container board-balanced-light">
+					<div class="title board-mellow-dark">
+						<div class="text text-type-0">
+							<i class={{_fontIconConst.MULTIPLE_USERS}} aria-hidden="true"></i> {{_stringConst.VOLUNTEERS_FEEDBACK}}
+						</div>
+						<div class="action">
+							&nbsp;
+						</div>
+					</div>
+					<div class="table-list">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> All volunteers feedbacks
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div class="table-list" ng-show="!_userFeedbacks.success">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> No feedbacks found
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div ng-repeat="_feedback in _userFeedbacks.data"> 
+						<div class="table-list">
+							<div class="table-row-container" >
+								<div class="bottom bottom-l3-2 bottom-type-3">
+									<span>
+											<b>
+											<i class={{_fontIconConst.SINGLE_USER}}></i> {{_feedback.userFirstName}} {{_feedback.userLastName}}
+											</b>
+									</span>
+									<span class="cursor-pointer">
+										&nbsp;
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="table-list">
+							<div class="table-row-container">
+								<div class="top top-type-4">
+									{{_feedback.userFeedback}} 
+								</div>
+							</div>
+						</div>
+						<div class="table-list">
+							<div class="table-row-container">
+								<div class="bottom bottom-type-2"></div>
+								<div class="top top-type-5">
+									<div class="column-type-note ng-binding">
+										<i class="fa fa-info-circle"></i> On {{_feedback.feedbackCreatedOn}} 
+									</div>
+								</div>
+								<div class="bottom bottom-type-2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Registeded Users-->
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

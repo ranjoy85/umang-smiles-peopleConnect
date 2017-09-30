@@ -1,0 +1,94 @@
+<ion-view view-title={{_stringConst.REGISTERED_USERS.toUpperCase()}} class="background">
+	<ion-nav-buttons side=left>
+		<a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+	</ion-nav-buttons>
+	<ion-nav-buttons side=right>
+		<a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+	</ion-nav-buttons>
+	<ion-content>
+		<input type="file" id="fileElem" ng-model="myFile" class="form-control" accept=".csv"  onchange="angular.element(this).scope().uploadedFile(this)">
+			
+		<div class="app-form-universal-container">
+			<div class="app-form-universal-container">
+				<!-- Registeded Users-->
+				<div class="table-spot-container board-balanced-light">
+					<div class="title board-mellow-dark">
+						<div class="text text-type-0">
+							<i class={{_fontIconConst.MULTIPLE_USERS}} aria-hidden="true"></i> {{_stringConst.REGISTERED_USERS}}
+						</div>
+						<div class="action" ng-click="moreUserActions()">
+							<i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="table-list">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> All the users registeded in to the system
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div class="table-list" ng-if="_userUploadMessage">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5" ng-repeat="_message in _userUploadMessage">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> {{_message}}
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					
+					<div class="table-list" ng-show="!_users.success">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> Users found
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div class="table-category table-graph-width-0" ng-hide="!_users.success">
+						<div id="exportLeaveTypes">
+							<table class="rwd-table" width="100%">
+								<thead>
+									<tr>
+										<th>
+											<b>User Name</b>
+										</th>
+										<th>
+											<b>User Email</b>
+										</th>
+										<th>
+											<b>DOB</b>
+										</th>
+									</tr>
+								<thead>
+								<tbody>
+									<tr ng-repeat="_user in _users.data" class="data-th">
+										<td data-th='User Name'>
+											{{_user.userFirstName}} {{_user.userLastName}}
+										</td>
+										<td data-th='User Email'>
+											{{_user.userEmail}} 
+										</td>
+										<td data-th='DOB'>
+											{{_user.userDob}} 
+										</td>
+									</tr>
+								<tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- Registeded Users-->
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

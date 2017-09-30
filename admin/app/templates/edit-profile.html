@@ -1,0 +1,120 @@
+<ion-modal-view view-title={{_stringConst.EDIT_PROFILE}} class="background-modal">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">{{_stringConst.EDIT_PROFILE.toUpperCase()}}</h1>
+  	</ion-header-bar>
+  	<!-- <ion-nav-buttons side=left> -->
+        <!-- <a class="button button-icon icon fa fa-chevron-left" ng-click="goBack()"></a>  -->
+    <!-- </ion-nav-buttons> -->
+  	<form name="updateProfileForm" novalidate="" ng-submit="updateProfile(updateProfileForm)">
+		<ion-content>
+			<div class="list custom-icon_font">
+				<div class="app-form">
+				  	<div class="list">
+				  		<div class="info">
+							{{_stringConst.UPDATE_PROFILE_INFO}}
+						</div>
+						</br>
+						<div class="info">
+							{{_stringConst.USER_CREDIENTIALS}}
+						</div>
+						<!-- email -->
+				 		<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userEmail.$invalid, 'no-errors' : updateProfileForm._userEmail.$valid}">
+					  		<div class="icon">{{_stringConst.EMAIL}}</div>
+					  		<input type="email" name="_userEmail" ng-model="_updateProfileFormData._userEmail" placeholder = "name@example.com"required disabled>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userEmail.$error" ng-messages="updateProfileForm._userEmail.$error">
+					  		<div ng-messages-include="templates/error/error-email.html"></div>
+						</div>
+						<!-- email -->
+						<!-- password -->
+						<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userPassword.$invalid, 'no-errors' : updateProfileForm._userPassword.$valid}">
+					  		<div class="icon">{{_stringConst.PASSWORD}}</i></div>
+					  		<input type="password" name="_userPassword" ng-model="_updateProfileFormData._userPassword" placeholder = "8-10 char, 1 aplabel & 1 No" ng-pattern="_pattern._passwordPattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userPassword.$error" ng-messages="updateProfileForm._userPassword.$error">
+					  		<div ng-messages-include="templates/error/error-password.html"></div>
+						</div>
+						<!-- password -->
+						<!-- Secutity Questions -->
+						<div class="info">
+							{{_stringConst.USER_DETAILS}}
+						</div>
+			            <!-- Secutity Questions -->
+						<!-- First Name -->
+						<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userFirstName.$invalid, 'no-errors' : updateProfileForm._userFirstName.$valid}">
+					  		<div class="icon">{{_stringConst.FIRST_NAME}}</i></div>
+					  		<input type="text" name="_userFirstName" ng-model="_updateProfileFormData._userFirstName" placeholder ="Arun" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userFirstName.$error" ng-messages="updateProfileForm._userFirstName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- First Name -->
+						<!-- Last Name -->
+						<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userLastName.$invalid, 'no-errors' : updateProfileForm._userLastName.$valid}">
+					  		<div class="icon">{{_stringConst.LAST_NAME}}</div>
+					  		<input type="text" name="_userLastName" ng-model="_updateProfileFormData._userLastName" placeholder="Raj" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userLastName.$error" ng-messages="updateProfileForm._userLastName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- Last Name -->
+						<!-- Designation -->
+						<label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userDesignation.$invalid, 'no-errors' : updateProfileForm._userDesignation.$valid}">
+					  		<div class="icon">{{_stringConst.DESIGNATION}}</div>
+					  		<input type="text" name="_userDesignation" ng-model="_updateProfileFormData._userDesignation" placeholder="Consultant" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userDesignation.$error" ng-messages="updateProfileForm._userDesignation.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- Designation -->
+						<!-- Secutity Questions -->
+						<div class="info">
+							{{_stringConst.SECURITY_QUESTION}}
+						</div>
+			            <!-- Secutity Questions -->
+			            <!--  What is your dream job -->
+			            <label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userSecurityAnswer1.$invalid, 'no-errors' : updateProfileForm._userSecurityAnswer1.$valid}">
+			            	<div class="icon"> {{_stringConst.SECURITY_QUESTION_1}}</div>
+					  		<input type="text" name="_userSecurityAnswer1" ng-model="_updateProfileFormData._userSecurityAnswer1" placeholder="Consultant" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userSecurityAnswer1.$error" ng-messages="updateProfileForm._userSecurityAnswer1.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!--  What is your dream job -->
+						<!-- Your best chieldhood friend -->
+			            <label class="item-input" ng-class="{ 'has-errors' : updateProfileForm._userSecurityAnswer2.$invalid, 'no-errors' : updateProfileForm._userSecurityAnswer2.$valid}">
+			            	<div class="icon"> {{_stringConst.SECURITY_QUESTION_2}}</div>
+					  		<input type="text" name="_userSecurityAnswer2" ng-model="_updateProfileFormData._userSecurityAnswer2" placeholder="John" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="updateProfileForm._userSecurityAnswer2.$error" ng-messages="updateProfileForm._userSecurityAnswer2.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- Your best chieldhood friend -->
+						<!-- Secutity Questions -->
+						</br>
+					</div>
+				</div>
+			</div>
+		</ion-content>
+		<ion-footer-bar align-title="left" class="app-form-universal-container-footer-container">
+			<div class="action-area">
+				<button class="action action-cancel action-border" ng-click="cancelProfileUpdate()" type="button">
+					<div class="icon">
+						<i class={{_fontIconConst.CLOSE}}></i>
+					</div>
+					<div class="text">
+						{{_stringConst.CANCEL}}
+					</div>
+				</button>
+				<button class="action action-done" type="submit" ng-disabled="updateProfileForm.$invalid">
+					<div class="icon">
+						<i class={{_fontIconConst.SAVE}}></i>
+					</div>
+					<div class="text">
+						{{_stringConst.SAVE}}
+					</div>
+				</button>
+			</div>
+		</ion-footer-bar>
+	</form>
+</ion-modal-view>

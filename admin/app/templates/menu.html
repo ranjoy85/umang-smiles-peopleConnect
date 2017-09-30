@@ -1,0 +1,115 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content view-title="Access Points" drag-content="false">
+        <ion-nav-bar class="app-bar-blue">
+            <!-- <ion-nav-back-button class="button-dark">
+                <i class="fa fa-arrow-left"></i>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <div class="bar bar-header">
+                    <button id="leftMenu" class="button button-icon ion-navicon" menu-toggle="left">
+                </button>
+                </div>
+            </ion-nav-buttons> -->
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu expose-aside-when="large" side="left" class="background-dark" width="300">   
+    <ion-content>
+        <ion-list>
+            <div class="user-profile left-menu-classic">
+                <div class="icon">
+                    {{_sessionData.userFirstName.charAt(0)}}{{_sessionData.userLastName.charAt(0)}}
+                </div>
+                <div class="profile-specs">
+                    {{_sessionData.userFirstName}} {{_sessionData.userLastName}}
+                </div>
+            </div>
+            <!-- admin user -->
+            <ion-item enav-clear menu-close  ui-sref="app.system-events-landing" ui-sref-active="menu-selected" class="left-menu-clasic cursor-pointer">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.EVENT}}></i>
+                    </div>
+                    <div class="menu-text">
+                        {{_stringConst.SYSTEM_EVETS_VOLUNTEERS}}
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.tracking-hours" ui-sref-active="menu-selected" class="left-menu-clasic cursor-pointer">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.CLOCK}}></i>
+                    </div>
+                    <div class="menu-text">
+                        {{_stringConst.TRACKING_HOUR}}
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.registeded-users" ui-sref-active="menu-selected" class="left-menu-clasic cursor-pointer">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.MULTIPLE_USERS}}></i>
+                    </div>
+                    <div class="menu-text">
+                        {{_stringConst.REGISTERED_USERS}}
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close  ui-sref="app.volunteers-speak" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.SPEAK}}></i>
+                    </div>
+                    <div class="menu-text">
+                        Volunteers Feedback
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            
+            <ion-item enav-clear menu-close  ui-sref="app.corporate-details" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class={{_fontIconConst.BOOKMARK}}></i>
+                    </div>
+                    <div class="menu-text">
+                        Corporate Details 
+                    </div>
+                    <div class="menu-notification">
+                        
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <ion-item enav-clear menu-close ui-sref="app.about" ui-sref-active="menu-selected" class="left-menu-clasic">
+                <div class="top">
+                    <div class="icon">
+                        <i class="ion-information-circled"></i>
+                    </div>
+                    <div class="menu-text">
+                        About
+                    </div>
+                    <div class="menu-notification">
+
+                    </div>
+                    <div class="menu-normal-select"></div>
+                </div>
+                <div class="bottom"></div>
+            </ion-item>
+            <div class="left-menu-logout" ng-click="goLogout()">
+                <i class={{_fontIconConst.SIGN_OUT}}></i>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-side-menus>

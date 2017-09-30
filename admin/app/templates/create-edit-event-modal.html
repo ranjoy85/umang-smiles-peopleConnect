@@ -1,0 +1,102 @@
+<ion-modal-view view-title={{_pageTitle}} class="background-modal" ng-controller="CreateEditEventModalCtrl">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">{{_pageTitle.toUpperCase()}}</h1>
+  	</ion-header-bar>
+  	<form name="createEditEventForm" novalidate="" ng-submit="CRUDEventDetails(createEditEventForm)">
+		<ion-content>
+			<div class="list custom-icon_font">
+				<div class="app-form">
+				  	<div class="list">
+				  		<div class="info">
+							{{_stringConst.CRETE_EDIT_EVENT_INFO}}
+						</div>
+						</br>
+						<!-- Name -->
+                        <label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventName.$invalid, 'no-errors' : createEditEventForm.eventName.$valid}">
+                            <div class="icon">{{_stringConst.NAME}}</div>
+                            <input type="text" name="eventName" ng-model="_createEditEventFormData.eventName" placeholder = "Provide suitable Event name" ng-pattern="_pattern._namePattern" required>
+                        </label>
+                        <div class="error-container" ng-show="createEditEventForm.eventName.$error" ng-messages="createEditEventForm.eventName.$error">
+                            <div ng-messages-include="templates/error/error-name.html"></div>
+                        </div>
+                        <!-- name -->
+                        <!-- DESCRIPTION -->
+                        <label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventDescription.$invalid, 'no-errors' : createEditEventForm.eventDescription.$valid}">
+                            <div class="icon">{{_stringConst.DESCRIPTION}}</i></div>
+                            <textarea rows="4" cols="50" type="text" name="eventDescription" ng-model="_createEditEventFormData.eventDescription" placeholder = "Provide suitable Event descriotion" ng-pattern="_pattern._descriptionPattern" required></textarea>
+                        </label>
+                        <div class="error-container" ng-show="createEditEventForm.eventDescription.$error" ng-messages="createEditEventForm.eventDescription.$error">
+                            <div ng-messages-include="templates/error/error-description.html"></div>
+                        </div>
+						<!-- DESCRIPTION -->
+						<!-- DATE -->
+                        <label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventDate.$invalid, 'no-errors' : createEditEventForm.eventDate.$valid}">
+                            <div class="icon">{{_stringConst.DATE}}</i></div>
+                            <input type="date" name="eventDate" ng-model="_createEditEventFormData.eventDate" placeholder = "" ng-pattern="_pattern._datePattern" required></input>
+                        </label>
+                        <div class="error-container" ng-show="createEditEventForm.eventDate.$error" ng-messages="createEditEventForm.eventDate.$error">
+                            <div ng-messages-include="templates/error/error-date.html"></div>
+                        </div>
+						<!-- DATE -->
+						<!-- YT -->
+						<label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventYoutubeLink.$invalid, 'no-errors' : createEditEventForm.eventYoutubeLink.$valid}">
+							<div class="icon">{{_stringConst.YOUTUBE_LINK}}</div>
+							<input type="text" name="eventYoutubeLink" ng-model="_createEditEventFormData.eventYoutubeLink" placeholder = "Provide youtube link" ng-pattern="_pattern._urlPattern">
+						</label>
+						<div class="error-container" ng-show="createEditEventForm.eventYoutubeLink.$error" ng-messages="createEditEventForm.eventYoutubeLink.$error">
+							<div ng-messages-include="templates/error/error-url.html"></div>
+						</div>
+						<!-- YT -->
+						<!-- YT -->
+						<label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventTwitterLink.$invalid, 'no-errors' : createEditEventForm.eventTwitterLink.$valid}">
+							<div class="icon">{{_stringConst.TWITTER_LINK}}</div>
+							<input type="text" name="eventTwitterLink" ng-model="_createEditEventFormData.eventTwitterLink" placeholder = "Provide youtube link" ng-pattern="_pattern._urlPattern">
+						</label>
+						<div class="error-container" ng-show="createEditEventForm.eventTwitterLink.$error" ng-messages="createEditEventForm.eventTwitterLink.$error">
+							<div ng-messages-include="templates/error/error-url.html"></div>
+						</div>
+						<label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventFacebookLink.$invalid, 'no-errors' : createEditEventForm.eventFacebookLink.$valid}">
+							<div class="icon">{{_stringConst.FACEBOOK_LINK}}</div>
+							<input type="text" name="eventFacebookLink" ng-model="_createEditEventFormData.eventFacebookLink" placeholder = "Provide youtube link" ng-pattern="_pattern._urlPattern">
+						</label>
+						<div class="error-container" ng-show="createEditEventForm.eventFacebookLink.$error" ng-messages="createEditEventForm.eventFacebookLink.$error">
+							<div ng-messages-include="templates/error/error-url.html"></div>
+						</div>
+						<label class="item-input" ng-class="{ 'has-errors' : createEditEventForm.eventWebLink.$invalid, 'no-errors' : createEditEventForm.eventWebLink.$valid}">
+							<div class="icon">{{_stringConst.WEB_LINK}}</div>
+							<input type="text" name="eventWebLink" ng-model="_createEditEventFormData.eventWebLink" placeholder = "Provide youtube link" ng-pattern="_pattern._urlPattern">
+						</label>
+						<div class="error-container" ng-show="createEditEventForm.eventWebLink.$error" ng-messages="createEditEventForm.eventWebLink.$error">
+							<div ng-messages-include="templates/error/error-url.html"></div>
+						</div>
+
+						
+						
+						
+						</br>
+					</div>
+				</div>
+			</div>
+		</ion-content>
+		<ion-footer-bar align-title="left" class="app-form-universal-container-footer-container">
+			<div class="action-area">
+				<button class="action action-cancel action-border" ng-click="cancelOperation()" type="button">
+					<div class="icon">
+						<i class={{_fontIconConst.CLOSE}}></i>
+					</div>
+					<div class="text">
+						{{_stringConst.CANCEL}}
+					</div>
+				</button>
+				<button class="action action-done" type="submit" ng-disabled="createEditEventForm.$invalid">
+					<div class="icon">
+						<i class={{_fontIconConst.SAVE}}></i>
+					</div>
+					<div class="text">
+						{{_stringConst.SAVE}}
+					</div>
+				</button>
+			</div>
+		</ion-footer-bar>
+	</form>
+</ion-modal-view>

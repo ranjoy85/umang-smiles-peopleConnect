@@ -1,0 +1,156 @@
+<ion-view view-title={{_stringConst.PROFILE.toUpperCase()}} class="background">
+    <ion-header-bar class="app-bar-blue">
+        <!-- <h1 class="title">{{angularPageTitle}}</h1> -->
+    </ion-header-bar>
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="app-form-universal-container">
+        	<!-- left -->
+            <div class="app-form-universal-container-spot-container spot-container-full spot-container-overflow spot-container-no-search-no-bottom-no-title">
+                <div class="table-hit-container table-graph-width-0">
+                	<div class="user-profile">
+		                <div class="icon">
+		                    {{_updateProfileFormData._userFirstName.charAt(0)}}{{_updateProfileFormData._userLastName.charAt(0)}}
+		                </div>
+		                
+		            </div>
+		            <!-- My profile -->
+                    <div class="table-spot-container board-balanced-light">
+                        <div class="title board-mellow-dark">
+                            <div class="text text-type-0">
+                                <i class={{_fontIconConst.LIST}} aria-hidden="true"></i> {{_stringConst.PROFILE}}
+                            </div>
+                            <div class="action" ng-click="goEditProfile()">
+                                <i class={{_fontIconConst.EDIT}} aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="table-list">
+                            <table class="rwd-table" width="100%">
+                                <tbody>
+                                	<thead>
+                                        <tr>
+                                            <th>
+                                                <b>{{_stringConst.NAME}}</b>
+                                            </th>
+                                            <th>
+                                                 <b>{{_stringConst.WORKING_AS}}</b>
+                                            </th>
+                                            <th>
+                                                 <b>{{_stringConst.EMAIL}}</b>
+                                            </th>
+                                        </tr>
+                                    <thead>
+                                	<tbody>
+                                		<tr class="data-th">
+	                                        <td data-th={{_stringConst.NAME}}>
+	                                            {{_updateProfileFormData._userFirstName}} {{_updateProfileFormData._userLastName}}
+	                                        </td>
+	                                        <td data-th={{_stringConst.WORKING_AS}}>
+	                                            {{_updateProfileFormData._userDesignation}}
+	                                        </td>
+	                                        <td data-th={{_stringConst.EMAIL}}>
+	                                            {{_updateProfileFormData._userEmail}}
+	                                        </td>
+	                                    </tr>
+                                	</tbody>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- My profile -->
+                    <!-- Default Leave configuration -->
+                    <!-- <div class="table-spot-container board-balanced-light">
+                        <div class="title board-mellow-dark">
+                            <div class="text text-type-0">
+                                <i class="fa fa-list-alt" aria-hidden="true"></i> {{_stringConst.NOTIFICATION_CONFIGURATION}}
+                            </div>
+                        </div>
+                        <div class="table-list">
+                            <div class="table-row-container" >
+                                <div class="bottom bottom-type-2"></div>
+                                <div class="top top-type-5">
+                                    <div class="column-type-note">
+                                        <i class="fa fa-info-circle"></i> {{_stringConst.NOTIFICATION_CONFIGURATION_INFO}}
+                                    </div>
+                                </div>
+                                <div class="bottom bottom-type-2"></div>
+                            </div>
+                            <div class="table-row-container" ng-show="_showNotificaitonSection">
+                                <div class="top">
+                                    <div class="column column-type-4">
+                                        {{_stringConst.ENABLE_NOTIFICATION}}
+                                    </div>
+                                    
+                                    <div class="column column-type-5">
+                                        <label class="toggle toggle-assertive" ng-click="pushNotification()">
+                                            <input type="checkbox" ng-checked="_updateProfileFormData._browserId != 'NONE'" ng-model="_notificaitonEnabled" ng-disabled="_enableNotificaitonButton">
+                                            <div class="track">
+                                                <div class="handle"></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>   
+                                <div class="bottom bottom-type-2"></div>   
+                            </div>
+                            <div class="table-row-container" ng-hide="_showNotificaitonSection">
+                                <div class="top">
+                                    <div class="column column-type-4">
+                                        {{_message}}
+                                    </div>
+                                </div>   
+                                <div class="bottom bottom-type-2"></div>   
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Default Leave configuration -->
+                    <!-- Working days -->
+                    <div class="table-spot-container board-balanced-light">
+                        <div class="title board-mellow-dark">
+                            <div class="text text-type-5">
+                                <i class={{_fontIconConst.CALENDER}} aria-hidden="true"></i> {{_stringConst.WORKING_DAYS}}
+                            </div>
+                        </div>
+                        <div class="table-list">
+                            <div class="table-row-container" >
+                                <div class="bottom bottom-type-2"></div>
+                                <div class="top top-type-5">
+                                    <div class="column-type-note">
+                                        <i class={{_fontIconConst.INFO}}></i> {{_stringConst.WORKING_DAYS_INFO}}
+                                    </div>
+                                </div>
+                                <div class="bottom bottom-type-2"></div>
+                            </div>
+                        </div>
+                        <div class="table-category table-graph-width-0">
+                            <div class="table-category-data" ng-repeat="_day in _settingsDaysInWeekStatus" ng-click="changeWorkingDay(_day)"> 
+                                <div class="table-list table-list-horizontal" ng-class="_day.status == '1' ? 'table-list-inactive' : ''">
+                                    <div class="table-title-container">
+                                        <div class="table-title-row-1 text-align-center table-title-row-3" ng-if="_day.status == '1'">
+                                            Off
+                                        </div>
+                                        <div class="table-title-row-1 text-align-center" ng-if="_day.status == '0'">
+                                            Working
+                                        </div>
+                                    </div>
+                                    <div class="table-title-container">
+                                        <div class="table-title table-title-font-big text-align-center">
+                                             {{_day.day}}
+                                        </div>
+                                    </div>
+                                    <div class="table-title-container">
+                                        &nbsp;
+                                    </div>
+                                    <div class="bottom bottom-type-1" ng-class="_day.status == '1' ? 'bottom-type-5' : ''"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Working days -->
+                </div>
+            </div>
+            <!-- left -->
+        </div>
+    </ion-content>
+</ion-view>

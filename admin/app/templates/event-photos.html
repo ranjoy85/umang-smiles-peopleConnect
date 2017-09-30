@@ -1,0 +1,55 @@
+<ion-view view-title="EVENT PHOTO" class="background">
+    <ion-nav-buttons side=left>
+        <a class="button button-icon icon {{_fontIconConst.BACK}}" ng-click="goBack()"></a> 
+    </ion-nav-buttons>
+    <ion-nav-buttons side=right>
+        <a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+    </ion-nav-buttons>
+    <ion-content>
+        
+        <div class="app-form-universal-container">
+            <div class="app-form-universal-container">
+                <!-- project list-->
+                <div class="table-spot-container board-balanced-light">
+                    <div class="title board-mellow-dark">
+                        <div class="text text-type-0">
+                            <i class={{_fontIconConst.EVENT}} aria-hidden="true"></i> {{_eventPhotos.data.eventName}} Photos
+                        </div>
+                        <div class="action" ng-click="moreEventPhotoActions()">
+                            <i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-row-container">
+                            <div class="bottom bottom-type-2"></div>
+                            <div class="top top-type-5">
+                                <div class="column-type-note ng-binding">
+                                    <i class="fa fa-info-circle"></i> Event photographs
+                                </div>
+                            </div>
+                            <div class="bottom bottom-type-2"></div>
+                        </div>
+                    </div>
+                    <input type="file" id="fileElem" ng-model="myFile" class="form-control" accept="image/*"  onchange="angular.element(this).scope().uploadedFile(this)">
+                    <div class="table-list" ng-if="_noData">
+                        <div class="table-title-container">
+                            <div class="top top-type-5">
+                                <div class="column-type-4">
+                                    <i class="fa fa-info-circle"></i> No photos found, add some
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat = "_photo in _eventPhotos.data.photos.data" ng-if="_eventPhotos.data.photos.success">
+                        <div class="gallery">
+                            <a target="_blank" href="fjords.jpg">
+                                <img src={{imageSource(_photo)}} alt="Fjords" width="300" height="200">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project list -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

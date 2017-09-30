@@ -1,0 +1,234 @@
+<ion-view view-title={{_stringConst.TRACKING_HOUR.toUpperCase()}} class="background">
+	<ion-nav-buttons side=left>
+		<a class="button button-icon icon {{_fontIconConst.LEFT_MENU_OPEN}}" ng-click="openLeftMenu()"></a> 
+	</ion-nav-buttons>
+	<ion-nav-buttons side=right>
+		<a class="button button-icon icon {{_fontIconConst.REFRESH}}" ng-click="doRefresh()"></a> 
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="app-form-universal-container">
+			<div class="app-form-universal-container">
+				<!-- Select date-->
+				<div class="table-spot-container board-balanced-light">
+					<div class="title board-mellow-dark">
+						<div class="text text-type-0">
+							<i class={{_fontIconConst.CLOCK}} aria-hidden="true"></i> {{_stringConst.TRACKING_HOUR}}
+						</div>
+						<div class="action" ng-click="moreEventReoirtActions()">
+							<i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="table-list">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> Select from and to date, select for what you want to track hours 
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div class="table-row-container" >
+						<div class="item-input no-errors">
+							<div class="icon">{{_stringConst.FROM_DATE}}</div>
+							<input type="date" name="" ng-model="_reportComponents.fromDate" placeholder = "" required></input>
+						</div>	
+					</div>
+					<div class="table-row-container" >
+						<div class="item-input no-errors">
+							<div class="icon">{{_stringConst.TO_DATE}}</div>
+							<input type="date" name="" ng-model="_reportComponents.toDate" placeholder = "" required></input>
+						</div>	
+						&nbsp;
+					</div>
+				</div>
+				<!-- Select date-->
+				<!-- Event report-->
+				<div class="table-spot-container board-balanced-light" ng-if="_reportComponents.segment == 'EVENT'">
+					<div class="title board-mellow-dark">
+						<div class="text text-type-0">
+							<i class={{_fontIconConst.CLOCK}} aria-hidden="true"></i> {{_stringConst.TRACKING_EVENT_HOUR}}
+						</div>
+						<div class="action" ng-click="moreEventReoirtActions()">
+							<i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="table-list">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> Below are the details of all hours spent for the event
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div ng-repeat="_event in _reportData.data"> 
+						<div class="table-list">
+							<div class="table-row-container" >
+								<div class="bottom bottom-l3-2 bottom-type-3">
+									<span>
+										<b>
+										<i class={{_fontIconConst.EVENT}}></i> {{_event.eventName}} [{{_event.eventId}}]
+										</b>
+									</span>
+									<span>
+										&nbsp;
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="table-list" ng-show="!_event.hoursTrack.success">
+							<div class="table-row-container">
+								<div class="bottom bottom-type-2"></div>
+								<div class="top top-type-5">
+									<div class="column-type-note ng-binding">
+										<i class="fa fa-info-circle"></i> No one has spent time yet
+									</div>
+								</div>
+								<div class="bottom bottom-type-2"></div>
+							</div>
+						</div>
+						<div class="table-category table-graph-width-0" ng-hide="!_event.hoursTrack.success">
+							<div id="exportLeaveTypes">
+								<table class="rwd-table" width="100%">
+									<thead>
+										<tr>
+											<th>
+												<b>User Name</b>
+											</th>
+											<th>
+												<b>User Email</b>
+											</th>
+											<th>
+												<b>User Signed In</b>
+											</th>
+											<th>
+												<b>User Signed Out</b>
+											</th>
+											<th>
+												<b>Time Spent(hrs)</b>
+											</th>
+										</tr>
+									<thead>
+									<tbody>
+										<tr ng-repeat="_user in _event.hoursTrack.data" class="data-th">
+											<td data-th='User Name'>
+												{{_user.userFirstName}} {{_user.userLastName}}
+											</td>
+											<td data-th='User Email'>
+												{{_user.userEmail}} 
+											</td>
+											<td data-th='User Signed In'>
+												{{_user.userEventSignIn}} 
+											</td>
+											<td data-th='User Signed Out'>
+												{{_user.userEventSignOut}} 
+											</td>
+											<td data-th='Time Spent(hrs)'>
+												{{_dateFactory.secondToHHMMSS(_user.userEventLoggedTime)}} 
+											</td>
+										</tr>
+									<tbody>
+								</table>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<!-- Event report-->
+				<!-- User report-->
+				<div class="table-spot-container board-balanced-light" ng-if="_reportComponents.segment == 'USER'">
+					<div class="title board-mellow-dark">
+						<div class="text text-type-0">
+							<i class={{_fontIconConst.CLOCK}} aria-hidden="true"></i> {{_stringConst.TRACKING_USER_HOUR}}
+						</div>
+						<div class="action" ng-click="moreEventReoirtActions()">
+							<i class={{_fontIconConst.MORE}} aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="table-list">
+						<div class="table-row-container">
+							<div class="bottom bottom-type-2"></div>
+							<div class="top top-type-5">
+								<div class="column-type-note ng-binding">
+									<i class="fa fa-info-circle"></i> Below are the details of all hours spent by a volunteer
+								</div>
+							</div>
+							<div class="bottom bottom-type-2"></div>
+						</div>
+					</div>
+					<div ng-repeat="_user in _reportData.data"> 
+						<div class="table-list">
+							<div class="table-row-container" >
+								<div class="bottom bottom-l3-2 bottom-type-3">
+									<span>
+										<b>
+										<i class={{_fontIconConst.EVENT}}></i> {{_user.userFirstName}} {{_user.userLastName}}
+										</b>
+									</span>
+									<span>
+										&nbsp;
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="table-list" ng-show="!_user.hoursTrack.success">
+							<div class="table-row-container">
+								<div class="bottom bottom-type-2"></div>
+								<div class="top top-type-5">
+									<div class="column-type-note ng-binding">
+										<i class="fa fa-info-circle"></i> No time spent yet
+									</div>
+								</div>
+								<div class="bottom bottom-type-2"></div>
+							</div>
+						</div>
+						<div class="table-category table-graph-width-0" ng-hide="!_user.hoursTrack.success">
+							<div id="exportLeaveTypes">
+								<table class="rwd-table" width="100%">
+									<thead>
+										<tr>
+											<th>
+												<b>Event Name</b>
+											</th>
+											<th>
+												<b>User Signed In</b>
+											</th>
+											<th>
+												<b>User Signed Out</b>
+											</th>
+											<th>
+												<b>Time Spent(hrs)</b>
+											</th>
+										</tr>
+									<thead>
+									<tbody>
+										<tr ng-repeat="_user in _user.hoursTrack.data" class="data-th">
+											<td data-th='User Name'>
+												{{_user.eventName}}
+											</td>
+											<td data-th='User Signed In'>
+												{{_user.userEventSignIn}} 
+											</td>
+											<td data-th='User Signed Out'>
+												{{_user.userEventSignOut}} 
+											</td>
+											<td data-th='Time Spent(hrs)'>
+												{{_dateFactory.secondToHHMMSS(_user.userEventLoggedTime)}} 
+											</td>
+										</tr>
+									<tbody>
+								</table>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<!-- User report-->
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

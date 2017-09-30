@@ -1,0 +1,23 @@
+view - <i class="fa fa-eye"></i>
+edit - <i class="fa fa-pencil-square-o"></i>
+cancel - <i class="ion-close"></i>
+save - <i class="fa fa-floppy-o"></i>
+delete - <i class="ion-android-delete"></i>
+refresh - <i class="fa fa-refresh"></i>
+theme - <i class="ion-android-color-palette"></i>
+info - <i class="fa fa-info-circle"></i>
+project - <i class="fa fa-sitemap"></i>
+sprint - <i class="fa fa-recycle"></i>
+single user - <i class="fa fa-user"></i>
+users - <i class="fa fa-users"></i>
+time - <i class="fa fa-clock-o"></i>
+story - <i class="ion-clipboard"></i>
+comment - <i class="fa fa-comments"></i>
+exchange - <i class="fa fa-exchange"></i>
+priority - <i class="fa fa-flag"></i>
+task - <i class="fa fa-tasks"></i>
+timesheet - <i class="fa fa-calendar"></i>
+bug - <i class="fa fa-bug" aria-hidden="true"></i>
+release - <i class="fa fa-paper-plane" aria-hidden="true"></i>
+report - <i class="fa fa-print" aria-hidden="true"></i>
+epic - <i class="fa fa-clipboard" aria-hidden="true"></i>

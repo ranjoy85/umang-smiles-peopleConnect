@@ -1,0 +1,109 @@
+<ion-view view-title={{_stringConst.SIGN_UP}} class="background-modal">
+	<ion-header-bar class="app-bar-blue">
+    	<h1 class="title">{{_stringConst.SIGN_UP.toUpperCase()}}</h1>
+  	</ion-header-bar>
+  	<form name="signUpForm" novalidate="" ng-submit="signUp(signUpForm)">
+		<ion-content>
+			<div class="list custom-icon_font">
+				<div class="app-form">
+				  	<div class="list">
+				  		<div class="info">
+							{{_stringConst.SIGN_UP_INFO}}
+						</div>
+						</br>
+						<!-- First Name -->
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm._userFirstName.$invalid, 'no-errors' : signUpForm._userFirstName.$valid}">
+					  		<div class="icon">{{_stringConst.FIRST_NAME}}</i></div>
+					  		<input type="text" name="_userFirstName" ng-model="_signUpFormData._userFirstName" placeholder ="Arun" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userFirstName.$error" ng-messages="signUpForm._userFirstName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- First Name -->
+						<!-- Last Name -->
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm._userLastName.$invalid, 'no-errors' : signUpForm._userLastName.$valid}">
+					  		<div class="icon">{{_stringConst.LAST_NAME}}</div>
+					  		<input type="text" name="_userLastName" ng-model="_signUpFormData._userLastName" placeholder="Raj" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userLastName.$error" ng-messages="signUpForm._userLastName.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- Last Name -->
+						<!-- Designation -->
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm._userDesignation.$invalid, 'no-errors' : signUpForm._userDesignation.$valid}">
+					  		<div class="icon">{{_stringConst.DESIGNATION}}</div>
+					  		<input type="text" name="_userDesignation" ng-model="_signUpFormData._userDesignation" placeholder="Consultant" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userDesignation.$error" ng-messages="signUpForm._userDesignation.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- Designation -->
+			  			<!-- email -->
+				 		<label class="item-input" ng-class="{ 'has-errors' : signUpForm._userEmail.$invalid, 'no-errors' : signUpForm._userEmail.$valid}">
+					  		<div class="icon">{{_stringConst.EMAIL}}</div>
+					  		<input type="email" name="_userEmail" ng-model="_signUpFormData._userEmail" placeholder = "name@example.com"required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userEmail.$error" ng-messages="signUpForm._userEmail.$error">
+					  		<div ng-messages-include="templates/error/error-email.html"></div>
+						</div>
+						<!-- email -->
+						<!-- password -->
+						<label class="item-input" ng-class="{ 'has-errors' : signUpForm._userPassword.$invalid, 'no-errors' : signUpForm._userPassword.$valid}">
+					  		<div class="icon">{{_stringConst.PASSWORD}}</i></div>
+					  		<input type="password" name="_userPassword" ng-model="_signUpFormData._userPassword" ng-pattern="_pattern._passwordPattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userPassword.$error" ng-messages="signUpForm._userPassword.$error">
+					  		<div ng-messages-include="templates/error/error-password.html"></div>
+						</div>
+						<!-- password -->
+						
+						<!-- Secutity Questions -->
+			  			<div class="info">
+							{{_stringConst.SECURITY_QUESTION}}
+						</div>
+			            <!--  What is your dream job -->
+			            <label class="item-input" ng-class="{ 'has-errors' : signUpForm._userSecurityAnswer1.$invalid, 'no-errors' : signUpForm._userSecurityAnswer1.$valid}">
+			            	<div class="icon"><i class="ion-help-circled"></i> {{_stringConst.SECURITY_QUESTION_1}}</div>
+					  		<input type="text" name="_userSecurityAnswer1" ng-model="_signUpFormData._userSecurityAnswer1" placeholder="Consultant" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userSecurityAnswer1.$error" ng-messages="signUpForm._userSecurityAnswer1.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!--  What is your dream job -->
+						<!-- Your best chieldhood friend -->
+			            <label class="item-input" ng-class="{ 'has-errors' : signUpForm._userSecurityAnswer2.$invalid, 'no-errors' : signUpForm._userSecurityAnswer2.$valid}">
+			            	<div class="icon"><i class="ion-help-circled"></i> {{_stringConst.SECURITY_QUESTION_2}}</div>
+					  		<input type="text" name="_userSecurityAnswer2" ng-model="_signUpFormData._userSecurityAnswer2" placeholder="John" ng-pattern="_pattern._namePattern" required>
+						</label>
+						<div class="error-container" ng-show="signUpForm._userSecurityAnswer2.$error" ng-messages="signUpForm._userSecurityAnswer2.$error">
+					  		<div ng-messages-include="templates/error/error-name.html"></div>
+						</div>
+						<!-- Your best chieldhood friend -->
+						<!-- Secutity Questions -->
+						</br>
+					</div>
+				</div>
+			</div>
+		</ion-content>
+		<ion-footer-bar align-title="left" class="app-form-universal-container-footer-container">
+			<div class="action-area">
+				<button class="action action-cancel action-border" ng-click="cancelSignUp()" type="button">
+					<div class="icon">
+						<i class="ion-close"></i>
+					</div>
+					<div class="text">
+						{{_stringConst.CANCEL}}
+					</div>
+				</button>
+				<button class="action action-done" type="submit" ng-disabled="signUpForm.$invalid">
+					<div class="icon">
+						<i class="ion-checkmark-round"></i> 
+					</div>
+					<div class="text">
+						{{_stringConst.SIGN_UP}}
+					</div>
+				</button>
+			</div>
+		</ion-footer-bar>
+	</form>
+</ion-view>
